@@ -1,14 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Login</title>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
 <!-- Include _menu.html -->
 <th:block th:include="/_menu"></th:block>
+<div align="center">
 
-<h1>Login</h1>
 
 <!-- /login?error=true -->
 <div th:if="${#request.getParameter('error') == 'true'}"
@@ -21,32 +20,44 @@
          </span>
 
 </div>
-
-<h3>Enter user name and password:</h3>
-<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+<div class="mt-2">
+<h3>Login</h3>
+<form name='login_form' th:action="@{/j_spring_security_check}" method='POST'>
     <table>
         <tr>
             <td>User:</td>
-            <td><input type='text' name='username' value=''></td>
+            <td><input class="mb-2" type='text' name='username' value=''></td>
         </tr>
         <tr>
             <td>Password:</td>
-            <td><input type='password' name='password' /></td>
+            <td><input class="mb-2" type='password' name='password' /></td>
         </tr>
 
         <tr>
-            <td><input class="btn btn-primary" name="submit" type="submit" value="submit" /></td>
+            <td><input class="btn btn-primary mb-2" name="submit" type="submit" value="Submit" /></td>
         </tr>
     </table>
 </form>
-
+</div>
 <br>
-Username/pass:
-<ul>
-    <li>viewer/123</li>
-    <li>publisher/123</li>
-</ul>
-
+    <table class="table w-25">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">Password</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>viewer</td>
+            <td>123</td>
+        </tr>
+        <tr>
+            <td>publisher</td>
+            <td>123</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
-
 </html>
