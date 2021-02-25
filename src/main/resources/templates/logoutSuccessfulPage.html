@@ -1,14 +1,11 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
 <head>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
     <title>Logout</title>
 </head>
 
 <body>
-<!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
-
 <h1>Logout Successful!</h1>
 </body>
 

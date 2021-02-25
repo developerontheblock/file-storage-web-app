@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class MainController {
+public class UserController {
 
     @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
     public String homePage(Model model) {
@@ -23,9 +23,9 @@ public class MainController {
     @RequestMapping(value = "/publisher", method = RequestMethod.GET)
     public String publisherPage(Model model, Principal principal) {
 
-        User loginedUser = (User) ((Authentication) principal).getPrincipal();
+        User loggedUser = (User) ((Authentication) principal).getPrincipal();
 
-        String userInfo = WebUtils.toString(loginedUser);
+        String userInfo = WebUtils.toString(loggedUser);
         model.addAttribute("userInfo", userInfo);
 
         return "publisherPage";
@@ -47,13 +47,13 @@ public class MainController {
     public String userInfo(Model model, Principal principal) {
 
         // After user login successfully.
-        String userName = principal.getName();
+        // String userName = principal.getName();
 
        // System.out.println("User Name: " + userName);
 
-        User loginedUser = (User) ((Authentication) principal).getPrincipal();
+        User loggedUser = (User) ((Authentication) principal).getPrincipal();
 
-        String userInfo = WebUtils.toString(loginedUser);
+        String userInfo = WebUtils.toString(loggedUser);
         model.addAttribute("userInfo", userInfo);
 
         return "userInfoPage";
@@ -61,22 +61,16 @@ public class MainController {
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public String accessDenied(Model model, Principal principal) {
-        System.out.println("1" + principal);
+
         if (principal != null) {
-            User loginedUser = (User) ((Authentication) principal).getPrincipal();
-            System.out.println("123");
-
-            String userInfo = WebUtils.toString(loginedUser);
-
+            User loggedUser = (User) ((Authentication) principal).getPrincipal();
+            String userInfo = WebUtils.toString(loggedUser);
             model.addAttribute("userInfo", userInfo);
 
-            String message = "Hi " + principal.getName() //
-                    + "<br> You do not have permission to access this page!";
+            String message = "Hi, " + principal.getName() + "!"
+                    + "<br> You do not have permission to access this page! :(";
             model.addAttribute("message", message);
-
         }
-
         return "403Page";
     }
-
 }

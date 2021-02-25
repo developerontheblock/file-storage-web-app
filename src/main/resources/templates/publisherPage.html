@@ -1,22 +1,17 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
-    <title th:utext="${title}"></title>
-</head>
-<body>
 <!-- Include _menu.html -->
 <th:block th:include="/_menu"></th:block>
 
-<h2>Publisher Page</h2>
-<h3>Welcome,
-    <span th:utext="${#request.userPrincipal.name}"!></span>
-</h3>
-<b>This is protected page!</b>
+<head>
+    <title th:utext="${title}"></title>
+</head>
+<body>
+    <h3 class="container justify-content-center w-75 p-3">Welcome,
+        <span th:utext="${#request.userPrincipal.name}"></span>
+    </h3>
+</div>
 
 <br/><br/>
-
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
 
 <div class="container justify-content-center w-25 p-3">
     <h1>File Upload</h1>
@@ -25,10 +20,8 @@
     <input type="file" name="file"> <br/><br/>
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
-
     <a class="nav-item nav-link" th:href="@{/publisher/listAll}">See all uploaded files</a>
     <hr/>
-<!--<h2>All Uploaded Files:</h2>-->
 <ul>
     <li th:each="file : ${files}">
         <a th:href="${file}" target="_blank" th:text="${file}"></a>
