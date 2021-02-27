@@ -9,24 +9,16 @@
 <h3 class="container justify-content-center w-75 p-3">Welcome,
     <span th:utext="${#request.userPrincipal.name}"></span>
 </h3>
-</div>
+
 <div class="container justify-content-center w-25 p-3">
     <h1>File Upload</h1>
     <hr/>
 
-<!--    <form th:object="${myUploadForm}" method="POST"-->
-<!--          action="" enctype="multipart/form-data">-->
-<!--        Description:-->
-<!--        <br>-->
-<!--        <input th:field="*{description}" style="width:300px;"/>-->
-<!--        <br/>-->
-<!--    </form>-->
-
-    <form class="rounded-pill"  method="POST" enctype="multipart/form-data" th:action="@{/upload-file}">
+    <form class="rounded-pill" method="POST" enctype="multipart/form-data" th:action="@{/upload-file}">
         <input type="file" name="file"> <br/><br/>
-        <button class="btn btn-primary" type="submit" >Submit</button>
+        <button class="btn btn-primary" type="submit" th:href="@{/publisher/listAll}">Submit</button>
     </form>
-    <a class="nav-item nav-link" th:href="@{/publisher/listAll}">See all uploaded files</a>
+<!--    <a class="nav-item nav-link" ">See all uploaded files</a>-->
     <hr/>
     <ul>
         <li th:each="file : ${files}">
@@ -35,9 +27,6 @@
     </ul>
 </div>
 <br/><br/>
-<a class="nav-item nav-link" th:href="@{/publisher/uploadOneFile}">Upload File</a>
-
-
 </body>
 
 </html>

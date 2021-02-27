@@ -5,9 +5,8 @@
 <head>
     <title>Login</title>
 </head>
+
 <body>
-
-
 <!-- /login?error=true -->
 <div th:if="${#request.getParameter('error') == 'true'}"
      style="color:red;margin:10px 0px;">
@@ -19,7 +18,8 @@
          </span>
 
 </div>
-<div class="container justify-content-center w-25 p-3" style="background-color: #eeeeee; margin-top: 5em; border: 1px solid black; border-radius: 8px">
+<div class="container justify-content-center w-25 p-3"
+     style="background-color: #eeeeee; margin-top: 5em; border: 1px solid black; border-radius: 8px">
     <h1 class="display-5">Login</h1>
 
     <form th:action="@{/j_spring_security_check}" method="POST">

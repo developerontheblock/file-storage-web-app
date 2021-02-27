@@ -6,11 +6,12 @@
 <body>
 <!-- Include _menu.html -->
 <th:block th:include="/_menu"></th:block>
+<div class="container justify-content-center w-25 p-3">
 
-<h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
+    <h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
 
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
+    <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+</div>
 </body>
 
 </html>

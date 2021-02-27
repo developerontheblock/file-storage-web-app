@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-
 import com.example.demo.exception.FileNotFoundException;
 import com.example.demo.exception.StorageException;
 import com.example.demo.properties.StorageProperties;
@@ -51,7 +50,7 @@ public class FileSystemStorageService implements StorageService {
                 throw new StorageException("Failed to store empty file " + filename);
             }
             if (filename.contains("..")) {
-                // This is a security check
+                // security check
                 throw new StorageException(
                         "Cannot store file with relative path outside current directory "
                                 + filename);
@@ -64,8 +63,6 @@ public class FileSystemStorageService implements StorageService {
         catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
         }
-//        model.addAttribute("description", description);
-
         return filename;
     }
 
@@ -79,7 +76,6 @@ public class FileSystemStorageService implements StorageService {
         catch (IOException e) {
             throw new StorageException("Failed to read stored files", e);
         }
-
     }
 
     @Override
@@ -104,6 +100,7 @@ public class FileSystemStorageService implements StorageService {
             throw new FileNotFoundException("Could not read file: " + filename, e);
         }
     }
+
 
     @Override
     public void deleteAll() {

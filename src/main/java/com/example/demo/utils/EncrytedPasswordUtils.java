@@ -16,5 +16,4 @@ public class EncrytedPasswordUtils {
 
         System.out.println("Encryted Password: " + encrytedPassword);
     }
-
 }

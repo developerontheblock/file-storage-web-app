@@ -1,5 +1,5 @@
--- Create table
--- create table APP_USER
+-- CREATE TABLE
+-- CREATE TABLE APP_USER
 -- (
 --     USER_ID           BIGINT not null,
 --     USER_NAME         VARCHAR(36) not null,
@@ -7,68 +7,68 @@
 --     ENABLED           BIT not null
 -- ) ;
 --
--- alter table APP_USER
---     add constraint APP_USER_PK primary key (USER_ID);
+-- ALTER TABLE APP_USER
+--     ADD CONSTRAINT APP_USER_PK primary key (USER_ID);
 --
--- alter table APP_USER
---     add constraint APP_USER_UK unique (USER_NAME);
+-- ALTER TABLE APP_USER
+--     ADD CONSTRAINT APP_USER_UK unique (USER_NAME);
 --
 --
--- -- Create table
--- create table APP_ROLE
+-- -- CREATE TABLE
+-- CREATE TABLE APP_ROLE
 -- (
 --     ROLE_ID   BIGINT not null,
 --     ROLE_NAME VARCHAR(30) not null
 -- ) ;
 -- --
--- alter table APP_ROLE
---     add constraint APP_ROLE_PK primary key (ROLE_ID);
+-- ALTER TABLE APP_ROLE
+--     ADD CONSTRAINT APP_ROLE_PK primary key (ROLE_ID);
 --
--- alter table APP_ROLE
---     add constraint APP_ROLE_UK unique (ROLE_NAME);
+-- ALTER TABLE APP_ROLE
+--     ADD CONSTRAINT APP_ROLE_UK unique (ROLE_NAME);
 
 --
--- -- Create table
--- create table USER_ROLE
+-- -- CREATE TABLE
+-- CREATE TABLE USER_ROLE
 -- (
 --     ID      BIGINT not null,
 --     USER_ID BIGINT not null,
 --     ROLE_ID BIGINT not null
 -- );
 -- --
--- alter table USER_ROLE
---     add constraint USER_ROLE_PK primary key (ID);
+-- ALTER TABLE USER_ROLE
+--     ADD CONSTRAINT USER_ROLE_PK primary key (ID);
 --
--- alter table USER_ROLE
---     add constraint USER_ROLE_UK unique (USER_ID, ROLE_ID);
+-- ALTER TABLE USER_ROLE
+--     ADD CONSTRAINT USER_ROLE_UK unique (USER_ID, ROLE_ID);
 --
--- alter table USER_ROLE
---     add constraint USER_ROLE_FK1 foreign key (USER_ID)
+-- ALTER TABLE USER_ROLE
+--     ADD CONSTRAINT USER_ROLE_FK1 foreign key (USER_ID)
 --         references APP_USER (USER_ID);
 --
--- alter table USER_ROLE
---     add constraint USER_ROLE_FK2 foreign key (ROLE_ID)
+-- ALTER TABLE USER_ROLE
+--     ADD CONSTRAINT USER_ROLE_FK2 foreign key (ROLE_ID)
 --         references APP_ROLE (ROLE_ID);
 
-insert into App_User (USER_ID, USER_NAME, ENCRYTED_PASSWORD, ENABLED)
-values (2, 'viewer', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
+INSERT INTO App_User (USER_ID, USER_NAME, ENCRYTED_PASSWORD, ENABLED)
+VALUES (2, 'viewer', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
 
-insert into App_User (USER_ID, USER_NAME, ENCRYTED_PASSWORD, ENABLED)
-values (1, 'publisher', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
+INSERT INTO App_User (USER_ID, USER_NAME, ENCRYTED_PASSWORD, ENABLED)
+VALUES (1, 'publisher', '$2a$10$PrI5Gk9L.tSZiW9FXhTS8O8Mz9E97k2FZbFvGFFaSsiTUIl.TCrFu', 1);
 
-insert into app_role (ROLE_ID, ROLE_NAME)
-values (1, 'ROLE_PUBLISHER');
+INSERT INTO app_role (ROLE_ID, ROLE_NAME)
+VALUES (1, 'ROLE_PUBLISHER');
 
-insert into app_role (ROLE_ID, ROLE_NAME)
-values (2, 'ROLE_VIEWER');
+INSERT INTO app_role (ROLE_ID, ROLE_NAME)
+VALUES (2, 'ROLE_VIEWER');
 
 ---
 
-insert into user_role (ID, USER_ID, ROLE_ID)
-values (1, 1, 1);
+INSERT INTO user_role (ID, USER_ID, ROLE_ID)
+VALUES (1, 1, 1);
 
-insert into user_role (ID, USER_ID, ROLE_ID)
+INSERT INTO user_role (ID, USER_ID, ROLE_ID)
 values (2, 1, 2);
 
-insert into user_role (ID, USER_ID, ROLE_ID)
+INSERT INTO user_role (ID, USER_ID, ROLE_ID)
 values (3, 2, 2);
