@@ -14,11 +14,10 @@ mvn spring-boot:run
 ```
 ## Database Credentials
 
-Database Credentials | -
+Settings  | -
 --- | --- 
 Database URL | /h2
 Driver class | org.h2.Driver
 JDBC URL | jdbc:h2:mem:filestorage
 User Name | admin
 Password | admin 
-

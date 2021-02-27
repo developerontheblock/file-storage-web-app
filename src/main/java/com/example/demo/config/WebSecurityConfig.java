@@ -32,8 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
-        // Setting Service to find User in the database.
-        // And Setting PassswordEncoder
+        // Setting Service to find User in the database and Setting PassswordEncoder
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 
     }
@@ -54,22 +53,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // For PUBLISHER only.
         http.authorizeRequests().antMatchers("/publisher").access("hasRole('ROLE_PUBLISHER')");
 
-        // When the user has logged in as XX.
-        // But access a page that requires role YY,
-        // AccessDeniedException will be thrown.
+        // AccessDeniedException will be thrown
         http.authorizeRequests().and().exceptionHandling().accessDeniedPage("/403");
 
         // Config for Login Form
         http.authorizeRequests().and().formLogin()//
-                // Submit URL of login page.
-                .loginProcessingUrl("/j_spring_security_check") // Submit URL
+                .loginProcessingUrl("/j_spring_security_check")
                 .loginPage("/login")//
                 .defaultSuccessUrl("/userAccountInfo")//
                 .failureUrl("/login?error=true")//
                 .usernameParameter("username")//
                 .passwordParameter("password")
-                // Config for Logout Page
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
-
     }
 }

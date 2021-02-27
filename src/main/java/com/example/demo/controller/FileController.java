@@ -62,17 +62,28 @@ public class FileController {
 
     @PostMapping("/upload-file")
     @ResponseBody
-    public FileResponse uploadFile(@RequestParam("file") MultipartFile file) {
+    public String uploadFile(@RequestParam("file") MultipartFile file) {
         String name = storageService.store(file);
 
-        String uri = ServletUriComponentsBuilder.fromCurrentContextPath()
+        ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/")
                 .path(name)
                 .toUriString();
 
-        FileResponse response = new FileResponse(name, uri, file.getContentType(), file.getSize());
-
-        return response;
+        return "<!DOCTYPE HTML>\n" +
+                "<!-- Include _menu.html -->\n" +
+                "<th:block th:include=\"/_menu\"></th:block>\n" +
+                "<head>\n" +
+                "    <title>Upload</title>\n" +
+                "</head>\n" +
+                "\n" +
+                "<body>\n" +
+                "<h1>Upload Successful!</h1>\n" +
+                "</body>\n" +
+                "<form>\n" +
+                "    <input type=\"button\" value=\"Go back!\" onclick=\"history.back()\">\n" +
+                "</form>\n" +
+                "</html>";
     }
 }
 
