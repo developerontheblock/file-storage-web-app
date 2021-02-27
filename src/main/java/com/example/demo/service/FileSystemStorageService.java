@@ -45,6 +45,7 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public String store(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
+
         try {
             if (file.isEmpty()) {
                 throw new StorageException("Failed to store empty file " + filename);
@@ -63,6 +64,7 @@ public class FileSystemStorageService implements StorageService {
         catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
         }
+//        model.addAttribute("description", description);
 
         return filename;
     }

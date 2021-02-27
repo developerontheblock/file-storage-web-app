@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class UserController {
 
-    @RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/home"}, method = RequestMethod.GET)
     public String homePage(Model model) {
         model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is home page!");
+        model.addAttribute("message", "Home page!");
         return "homePage";
     }
 
@@ -34,7 +34,7 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
 
-        return "loginPage";
+        return "login";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
@@ -45,11 +45,6 @@ public class UserController {
 
     @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
-
-        // After user login successfully.
-        // String userName = principal.getName();
-
-       // System.out.println("User Name: " + userName);
 
         User loggedUser = (User) ((Authentication) principal).getPrincipal();
 

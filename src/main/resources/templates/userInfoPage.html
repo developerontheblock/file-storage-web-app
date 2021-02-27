@@ -11,9 +11,14 @@
 <b>This is protected page!</b>
 
 <br/><br/>
-
 <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+<hr/>
+<a class="nav-item nav-link" th:href="@{/userInfo/viewAll}">View all uploaded files</a>
+<ul>
+    <li th:each="file : ${files}">
+        <a th:href="${file}" target="_blank" th:text="${file}"></a>
+    </li>
+</ul>
 
 </body>
-
 </html>
