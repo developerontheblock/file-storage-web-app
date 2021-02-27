@@ -16,9 +16,9 @@
 
     <form class="rounded-pill" method="POST" enctype="multipart/form-data" th:action="@{/upload-file}">
         <input type="file" name="file"> <br/><br/>
-        <button class="btn btn-primary" type="submit" th:href="@{/publisher/listAll}">Submit</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
-<!--    <a class="nav-item nav-link" ">See all uploaded files</a>-->
+    <a class="nav-item nav-link" th:href="@{/publisher/listAll}">See all uploaded files</a>
     <hr/>
     <ul>
         <li th:each="file : ${files}">

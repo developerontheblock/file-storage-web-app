@@ -12,6 +12,7 @@ Database: [H2](https://www.h2database.com/html/main.html)
 ```bash
 mvn spring-boot:run
 ```
+## Database Credentials
 
 Database Credentials | -
 --- | --- 
